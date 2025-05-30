@@ -20,7 +20,7 @@ export const PipelineToolbar = () => {
     
 
     return (
-        <div style={{ padding: '10px' }} className='flex justify-between items-center'  >
+        <div style={{ padding: '10px' }} className='flex justify-between items-center bg-indigo-500'  >
             <div style={{ marginTop: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px' }} className='flex justify-between items-center' >
                 <DraggableNode type='customInput' label='Input' />
                 <DraggableNode type='llm' label='LLM' />

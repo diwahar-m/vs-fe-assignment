@@ -16,25 +16,25 @@ export const OutputNode = ({ id, data }) => {
   };
 
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
+<div style={{ border: '1px solid #2f119b'}} className='rounded nodeContainer w-[200px] h-[120px] bg-[#473293] '>
       <Handle
         type="target"
         position={Position.Left}
         id={`${id}-value`}
       />
-      <div>
-        <span>Output</span>
+      <div className='h-[25%] flex items-center justify-center bg-gradient-to-r from-[#2a0f8c] via-[#9788cd]  to-[#9788cd] ' >
+        <span className='m-auto text-lg font-medium text-[#fff] '>Output</span>
       </div>
-      <div>
-        <label>
+      <div className='h-[75%] flex flex-col justify-around p-2 '>
+        <label className='text-[#fff] text-sm flex gap-3'>
           Name:
-          <input 
+          <input className='bg-[#fff] rounded w-[60%]'
             type="text" 
             value={currName} 
             onChange={handleNameChange} 
           />
         </label>
-        <label>
+        <label className='text-[#fff] text-sm'>
           Type:
           <select value={outputType} onChange={handleTypeChange}>
             <option value="Text">Text</option>
