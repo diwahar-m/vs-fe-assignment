@@ -1,6 +1,6 @@
 // textNode.js
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Handle, Position, useUpdateNodeInternals } from 'reactflow';
 import { getDynamicValues, getHandlePoint } from '../utils';
 
@@ -11,6 +11,14 @@ export const TextNode = ({ id, data }) => {
   const updateNodeInternals = useUpdateNodeInternals();
   const [handleCount, setHandleCount] = useState(0);
   const [handlePoint, setHandlePoints] = useState([]);
+  const textareaRef = useRef(null);
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [currText]);
   
   
     useEffect(()=> {
@@ -34,10 +42,10 @@ export const TextNode = ({ id, data }) => {
   const handleTextChange = (e) => {
     setCurrText(e.target.value);
   };
-  console.log(handleCount);
+  console.log(textareaRef);
 
   return (
-    <div style={{ border: '1px solid #2f119b'}} className='rounded nodeContainer w-[200px] h-[120px] bg-[#473293] '>
+    <div style={{ border: '1px solid #2f119b'}} className={`rounded nodeContainer w-[200px] h-[${ textareaRef.current.style.height ? textareaRef.current.style.height : '120px'}] bg-[#473293] `}>
       {Array.from({ length: handleCount }).map((_, index) => (
         <Handle
           key={index}
@@ -53,7 +61,7 @@ export const TextNode = ({ id, data }) => {
       <div className='h-[75%] flex flex-col justify-around p-2 '>
         <label className='text-[#fff] text-sm flex gap-3'>
           Text:
-          <textarea  className='bg-[#fff] text-[#000]  rounded w-[60%]'
+          <textarea ref={textareaRef}  className='bg-[#fff] text-[#000]  rounded  w-[70%]'
             type="text" 
             value={currText} 
             onChange={handleTextChange} 
