@@ -35,17 +35,13 @@ export const TextNode = ({ id, data }) => {
 
     },[currText])
 
-    
-
-
-
   const handleTextChange = (e) => {
     setCurrText(e.target.value);
   };
   console.log(textareaRef);
 
   return (
-    <div style={{ border: '1px solid #2f119b'}} className={`rounded nodeContainer w-[200px] h-[${ textareaRef.current.style.height ? textareaRef.current.style.height : '120px'}] bg-[#473293] `}>
+    <div style={{ border: '1px solid #2f119b'}} className={`rounded nodeContainer w-[260px] h-[${textareaRef?.current?.scrollHeight ? textareaRef?.current?.scrollHeight : '120px'}] bg-[#473293] `}>
       {Array.from({ length: handleCount }).map((_, index) => (
         <Handle
           key={index}
