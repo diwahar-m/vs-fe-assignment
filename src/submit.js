@@ -2,15 +2,13 @@
 
 import { Button } from "@radix-ui/themes";
 import { useStore } from "./store";
+import { ToastContainer, toast } from 'react-toastify';
 
 export const SubmitButton = () => {
     const {
           nodes,
           edges,
         } = useStore()
-        
-        console.log(nodes);
-        console.log(edges);
 
 
         const handleSubmit=async ()=> {
@@ -36,6 +34,8 @@ export const SubmitButton = () => {
             
                 const result = await response.json();
                 console.log(result);
+                toast(`Number of nodes : ${result?.num_nodes}; Number of edges: ${result?.num_edges}; Is Directed Acyclic Graph : ${result?.is_dag} `)
+
                 return result;
               } catch (error) { console.log(error)}
         }
@@ -44,6 +44,7 @@ export const SubmitButton = () => {
     return (
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <Button type="button" onClick={handleSubmit}>Submit</Button>
+            <ToastContainer />
         </div>
     );
 }
