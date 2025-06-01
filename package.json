@@ -12,6 +12,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.56.4",
     "react-scripts": "5.0.1",
+    "react-toastify": "^11.0.5",
     "reactflow": "^11.8.3",
     "web-vitals": "^2.1.4"
   },

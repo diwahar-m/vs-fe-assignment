@@ -8,18 +8,26 @@ export const SubmitButton = () => {
           nodes,
           edges,
         } = useStore()
+        
+        console.log(nodes);
+        console.log(edges);
 
 
         const handleSubmit=async ()=> {
-            console.log(" hbvjhberhv whvbwvbwkbv");
             const data={nodes, edges}
+            const formData = new URLSearchParams();
+            formData.append('pipeline', JSON.stringify({nodes, edges})); 
             try {
-                const response = await fetch('http://127.0.0.1:8000/pipelines/parse', {
+                const response = await fetch('http://127.0.0.1:8000/pipelines/parse/', {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
                   },
-                  body: JSON.stringify(data)
+                   body: JSON.stringify({
+                    nodes: nodes,
+                    edges: edges
+                  }),
+                  //  body: JSON.stringify({name:'Alice', age: 30}),
                 });
             
                 if (!response.ok) {
@@ -27,7 +35,7 @@ export const SubmitButton = () => {
                 }
             
                 const result = await response.json();
-                console.log('Success:', result);
+                console.log(result);
                 return result;
               } catch (error) { console.log(error)}
         }
