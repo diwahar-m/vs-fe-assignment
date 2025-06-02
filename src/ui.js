@@ -44,8 +44,7 @@ export const PipelineUI = () => {
       onEdgesChange,
       onConnect
     } = useStore(selector, shallow);
-    console.log(nodes);
-    console.log(edges);
+    
 
     const getInitNodeData = (nodeID, type) => {
       let nodeData = { id: nodeID, nodeType: `${type}` };

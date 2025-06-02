@@ -33,7 +33,6 @@ export const SubmitButton = () => {
                 }
             
                 const result = await response.json();
-                console.log(result);
                 toast(`Number of nodes : ${result?.num_nodes}; Number of edges: ${result?.num_edges}; Is Directed Acyclic Graph : ${result?.is_dag} `)
 
                 return result;

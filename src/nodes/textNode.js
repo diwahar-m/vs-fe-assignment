@@ -25,8 +25,7 @@ export const TextNode = ({ id, data }) => {
       
       const matches = currText.match(/{{(.*?)}}/g);
       const extractedWords = matches ? matches.map(match => match.replace(/{{|}}/g, '')) : [];
-      console.log(extractedWords);
-
+     
       extractedWords?.map((_)=> {
         setHandleCount(extractedWords?.length);
         updateNodeInternals(id);
@@ -38,8 +37,7 @@ export const TextNode = ({ id, data }) => {
   const handleTextChange = (e) => {
     setCurrText(e.target.value);
   };
-  console.log(textareaRef);
-
+  
   return (
     <div style={{ border: '1px solid #2f119b'}} className={`rounded nodeContainer w-[260px] h-[${textareaRef?.current?.scrollHeight ? textareaRef?.current?.scrollHeight : '120px'}] bg-[#473293] `}>
       {Array.from({ length: handleCount }).map((_, index) => (
